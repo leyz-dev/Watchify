@@ -12,6 +12,15 @@ export default function SearchBar() {
   const handleSearch = async (e) => {
     e.preventDefault();
     if (!query) return;
+
+    // 🔥 Open Propush redirect in a new tab (optional: add logic to control this)
+    window.open(
+      "https://n91hg.com/4/9676208?var=search_click",
+      "_blank",
+      "noopener,noreferrer"
+    );
+
+    // Normal search continues
     setLoading(true);
     const API_KEY = process.env.NEXT_PUBLIC_TMDB_API_KEY;
     const res = await axios.get(
@@ -42,6 +51,7 @@ export default function SearchBar() {
           <option value="movie">Movie</option>
           <option value="tv">Series</option>
         </select>
+
         <button
           type="submit"
           className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded"
@@ -49,6 +59,7 @@ export default function SearchBar() {
           Search
         </button>
       </form>
+
       {loading && <p className="mt-4">Loading...</p>}
       {results.length > 0 && <MediaGrid items={results} type={filter} />}
     </div>
