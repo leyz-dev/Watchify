@@ -31,8 +31,9 @@ export default function SearchBar() {
           value={query}
           onChange={(e) => setQuery(e.target.value)}
           placeholder={`Search ${filter}s...`}
-          className="flex-1 border rounded px-4 py-2"
+          className="flex-1 border rounded px-4 py-2 text-black"
         />
+
         <select
           value={filter}
           onChange={(e) => setFilter(e.target.value)}
