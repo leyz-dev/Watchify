@@ -1,3 +1,16 @@
+// app/watch/[id]/page.tsx
+
+export async function generateStaticParams() {
+  const popularIds = [
+    "299534", // Example: Avengers: Endgame
+    "24428", // Example: The Avengers
+    "603692", // Example: John Wick: Chapter 4
+    // Add more popular TMDB movie IDs as needed
+  ];
+
+  return popularIds.map((id) => ({ id }));
+}
+
 export async function generateMetadata({ params }) {
   return { title: `Watch Movie ${params.id}` };
 }

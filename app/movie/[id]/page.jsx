@@ -1,3 +1,5 @@
+// app/movie/[id]/page.tsx
+
 import Link from "next/link";
 import Image from "next/image";
 
@@ -8,6 +10,19 @@ async function fetchMovie(id) {
   );
   if (!res.ok) throw new Error("Failed to fetch movie");
   return res.json();
+}
+
+// ✅ Required for static export
+export async function generateStaticParams() {
+  const API_KEY = process.env.NEXT_PUBLIC_TMDB_API_KEY;
+  const res = await fetch(
+    `https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}`
+  );
+  const data = await res.json();
+
+  return data.results.map((movie) => ({
+    id: movie.id.toString(),
+  }));
 }
 
 export async function generateMetadata({ params }) {
