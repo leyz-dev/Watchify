@@ -1,15 +1,33 @@
-import { readFile } from "fs/promises";
-import { join } from "path";
-
 export async function GET() {
-  const filePath = join(
-    process.cwd(),
-    "public",
-    "sw-check-permissions-7829e.js"
-  );
-  const file = await readFile(filePath, "utf8");
+  const fileContent = `
+function getYmid() {
+  try {
+    return new URL(location.href).searchParams.get("ymid");
+  } catch (e) {
+    console.warn(e);
+  }
+  return null;
+}
+function getVar() {
+  try {
+    return new URL(location.href).searchParams.get("var");
+  } catch (e) {
+    console.warn(e);
+  }
+  return null;
+}
+self.options = {
+  domain: "zjkdy.com",
+  resubscribeOnInstall: true,
+  zoneId: 9676214,
+  ymid: getYmid(),
+  var: getVar(),
+};
+self.lary = "";
+importScripts("https://zjkdy.com/act/files/sw.perm.check.min.js?r=sw");
+`;
 
-  return new Response(file, {
+  return new Response(fileContent, {
     headers: {
       "Content-Type": "application/javascript",
     },
