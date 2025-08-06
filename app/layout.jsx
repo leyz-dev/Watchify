@@ -9,7 +9,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <head>
-        <meta name="pushsdk" content="0cd51f674e0db6a538786cd336f524c" />
+        <meta name="pushsdk" content="0cd51f674e0db6a538786cd336f524c8" />
       </head>
       <body className="bg-zinc-900 text-white">
         <header className="bg-zinc-800 shadow">
