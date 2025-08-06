@@ -37,7 +37,7 @@ export default function SearchBar() {
         <select
           value={filter}
           onChange={(e) => setFilter(e.target.value)}
-          className="border rounded px-2 py-2"
+          className="border rounded px-2 py-2 text-black"
         >
           <option value="movie">Movie</option>
           <option value="tv">Series</option>
